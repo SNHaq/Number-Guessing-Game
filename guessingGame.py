@@ -1,38 +1,19 @@
-from random import Random
-number = Random.Random(0, 5)
-guess1 = input("Please input your first guess here: ")
-guess2 = input("Please input your second guess here: ")
-guess3 = input("Please input your third guess here: ")
-guess4 = input("Please input your fourth guess here: ")
-guess5 = input("Please input your fifth guess here: ")
-chances = 5
+import random
+print("Welcome to the Number Guessing Game!")
+num = random.randint(0, 10)
+triesLeft = 0
+print("Guess a number between 0 and 10!")
 
-while chances <= 5: 
-    if guess1 + 50 or guess1 - 50 <= number :
-        print("You're guess was 50 numbers or less away from the number!")
-    else:
-        print("You're not to close to the answer. :(")
-    if guess1 == number:
-        print("Congratulations, you won!!!")
-    else:
-        chances = chances - 1
-        print("You have ", chances, " remaining.")
-        if guess2 == number:
-            print("Congratulations, you won!!!")
-        else:
-            chances = chances - 1
-            print("You have ", chances, " remaining.")
-            if guess3 == number:
-                print("Congratulations, you won!!!")
-            else:
-                chances = chances - 1
-                print("You have ", chances, " remaining.")
-                if guess4 == number:
-                    print("Congratulations, you won!!!")
-                else:
-                    chances = chances - 1
-                    print("You have ", chances, " remaining.")
-                    if guess5 == number:
-                        print("Congratulations, you won!!!")
-                    else: 
-                        print("You lost! The number was: ", number)
+while triesLeft < 5: 
+    guess = int(input("Enter your guess here: "))
+    if guess == num: 
+        print("Congratulations, you've won the game!")
+        break
+    elif guess < num: 
+        print("Just a little higher! You're last guess was ", guess, ".")
+    else: 
+        print("That's a little too high, try guessing something lower! You're last guess was ", guess, ".")
+    triesLeft += 1
+    #This checks to see whether or not you've already used your 5 guesses. 
+    if not triesLeft < 5: 
+        print("You lost this time, but good try! The number was ", num, "!")
